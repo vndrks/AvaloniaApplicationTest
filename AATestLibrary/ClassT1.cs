@@ -10,7 +10,7 @@ namespace AATestLibrary
     {
         public ClassT1()
         {
-            Console.WriteLine("##### T1 Constructor");
+            Console.WriteLine("### T1 Constructor");
         }
     }
 }

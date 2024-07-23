@@ -48,8 +48,8 @@
 				</StackPanel>
 
 				<StackPanel Orientation="Horizontal" Spacing="20">
-					<local:TCustomButton Name="CustomButton_OK" Content="OK "/>
-					<local:TCustomButton Name="CustomButton_Cancel" Content="Cancel "/>
+					<local:TCustomButton Name="CustomButton_OK" Content="OK" RepeatCount="15"/>
+					<local:TCustomButton Name="CustomButton_Cancel" Content="Cancel" RepeatCount="0"/>
 				</StackPanel>
 
 				<Button Name="AAA" Content="Button 01" />

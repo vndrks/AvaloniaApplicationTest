@@ -16,7 +16,7 @@ namespace AATestProject.UIComponents
         {
             base.OnPointerMoved(e);
             var pos = e.GetPosition(this);
-
+            
             if (pos.X < Bounds.Width * 0.25)
                 SetAreaPseudoclasses(true, false, false);
             else if (pos.X > Bounds.Width * 0.75)

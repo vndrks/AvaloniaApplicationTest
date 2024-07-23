@@ -44,8 +44,8 @@ public partial class MainView : UserControl
 
         StackPanel? SP_01 = this.FindControl<StackPanel>("SP_PANEL_01");
         CheckBox? CB_01 = this.FindControl<CheckBox>("NULL TEST 01");
-        CheckBox CB_02 = this.FindControl<CheckBox>("CB_TEST_02");
-        CheckBox CB_03 = this.FindControl<CheckBox>("NULL TEST 02");
+        CheckBox? CB_02 = this.FindControl<CheckBox>("CB_TEST_02");
+        CheckBox? CB_03 = this.FindControl<CheckBox>("NULL TEST 02");
 
         _TB_TITLE = this.FindControl<TextBlock>("TB_TITLE");
 
@@ -64,7 +64,7 @@ public partial class MainView : UserControl
         //TCustomButton btn = this.Get<TCustomButton>("AAA");
         //btn.Click += (s, e) =>
         //{
-        //    Debug.WriteLine("##### Clicked 155");
+        //    Debug.WriteLine("### Clicked 155");
         //};
         
         // t1.Join();

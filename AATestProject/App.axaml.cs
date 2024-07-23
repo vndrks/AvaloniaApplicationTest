@@ -23,7 +23,7 @@ public partial class App : Application
 
         
         var os = Environment.OSVersion;
-        System.Diagnostics.Debug.WriteLine("##### Current OS Information ##### \n");
+        System.Diagnostics.Debug.WriteLine("### Current OS Information ### \n");
         System.Diagnostics.Debug.WriteLine("Platform: {0:G}", os.Platform);
         System.Diagnostics.Debug.WriteLine("Version String: {0}", os.VersionString);
         System.Diagnostics.Debug.WriteLine("Version Information :");

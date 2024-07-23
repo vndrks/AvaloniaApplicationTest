@@ -17,7 +17,7 @@ namespace AATestProject.UIComponents;
 public class TCustomButton : Button
 {
     public static StyledProperty<int> RepeatCountProperty = 
-        AvaloniaProperty.Register<TCustomButton, int>(nameof(RepeatCount), defaultValue: 5);
+        AvaloniaProperty.Register<TCustomButton, int>(nameof(RepeatCount), defaultValue: 1);
 
     public int RepeatCount
     {
@@ -33,24 +33,23 @@ public class TCustomButton : Button
     private void InitializeComponent()
     {
         // AvaloniaXamlLoader.Load(this);
-        Name = "Button-A";
-        Content = "Button";
         
         Click += (s, e) =>
         {
             if (s is Button button)
             {
-                Debug.WriteLine($"##### Clicked Sender Name :  {button.Name}");
-                Debug.WriteLine($"##### Clicked Sender Content :  {button.Content}");
+                Debug.WriteLine($"### Clicked Sender Name :  {button.Name}");
+                Debug.WriteLine($"### Clicked Sender Content :  {button.Content}");
+                Debug.WriteLine($"### Clicked Sender RepeatCount :  {RepeatCount}");
             }
-            
-            ButtonClicked(s, e);
+            if (s != null)
+                ButtonClicked(s, e);
         };
     }
 
     public void ButtonClicked(object sender, RoutedEventArgs e)
     {
-        Debug.WriteLine("##### Clicked #####");
+        Debug.WriteLine("### Clicked ###");
     }
 }
 
