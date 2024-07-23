@@ -1,0 +1,189 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:AATestProject.ViewModels"
+             xmlns:local="clr-namespace:AATestProject.UIComponents"
+			 xmlns:eh="clr-namespace:AATestProject.EH"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="800"
+             x:Class="AATestProject.Views.MainView"
+             x:DataType="vm:MainViewModel">
+	<!--Width="1000" Height="1000">-->
+	<Design.DataContext>
+		<!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+		<vm:MainViewModel />
+	</Design.DataContext>
+
+	<TabControl x:Name="TEST_TAB_CTRL_01" SelectedIndex="1">
+		<TabItem Header="Notify prop change">
+			<StackPanel DataContext="{Binding VmType01}" Spacing="10">
+				<TextBlock> Send </TextBlock>
+				<TextBox Text="{Binding PropQues}, Mode=OneWay" />
+				<TextBlock> Receive </TextBlock>
+				<StackPanel Orientation="Horizontal" Spacing="20">
+					<TextBlock> O1 </TextBlock>
+					<Button Name="BTN_O1" Content="O1" />
+					<TextBox Text="{Binding PropQues}, Mode=OneWay}" Width="400"/>
+				</StackPanel>
+				<StackPanel Orientation="Horizontal" Spacing="20">
+					<TextBlock> O2 </TextBlock>
+					<Button Name="BTN_O2" Content="O2" />
+					<TextBox Text="{Binding PropQues}, Mode=TwoWay}" Width="400"/>
+				</StackPanel>
+				<StackPanel Orientation="Horizontal" Spacing="20">
+					<TextBlock> O3 </TextBlock>
+					<Button Name="BTN_O3" Content="O3" />
+					<TextBox Text="{Binding PropQues}, Mode=OneTime" Width="400"/>
+				</StackPanel>
+				<StackPanel Orientation="Horizontal" Spacing="20">
+					<TextBlock> O4 </TextBlock>
+					<Button Name="BTN_O4" Content="O4" />
+					<TextBox Text="{Binding PropQues}, Mode=OneWayToSource" Width="400"/>
+				</StackPanel>
+				<StackPanel Orientation="Horizontal" Spacing="20">
+					<TextBlock> O5 </TextBlock>
+					<Button Name="BTN_O5" Content="O5" />
+					<TextBox Text="{Binding PropAnswer}, Mode=OneWay" Width="400"/>
+				</StackPanel>
+
+				<StackPanel Orientation="Horizontal" Spacing="20">
+					<local:TCustomButton Name="CustomButton_OK" Content="OK "/>
+					<local:TCustomButton Name="CustomButton_Cancel" Content="Cancel "/>
+				</StackPanel>
+
+				<Button Name="AAA" Content="Button 01" />
+				<local:TCustomButton Name="BBB" Content="Button 02" />
+				<Button Name="CCC" Content="Button 03">CCC</Button>
+				<local:TCustomButtonType2> DDD </local:TCustomButtonType2>
+
+				<eh:CustomButtonControl x:Name="CustomButtonControl" ValueChanged="CustomButtonControl_NameChanged" />
+			</StackPanel>
+		</TabItem>
+		<TabItem Header="Reactive Object">
+			<StackPanel DataContext="{Binding VmType02}">
+				<Border Margin="5"
+                        CornerRadius="10"
+                        Background="LightBlue">
+					<TextBlock Margin="5"
+                               FontSize="24"
+                               HorizontalAlignment="Center"
+                               Text="Control Test"
+							   x:Name="TB_TITLE"/>
+				</Border>
+
+				<TextBlock Text="{Binding Name}" />
+				<TextBox  Text="{Binding Name}" />
+
+				<Grid>
+					<StackPanel Margin="10, 10, -10, 0" HorizontalAlignment="Center" VerticalAlignment="Center">
+						<StackPanel Orientation="Horizontal">
+							<StackPanel x:Name="SP_PANEL_01">
+								<TextBlock Name="DefaultButton" Text="Default Button" FontSize="18" TextAlignment="Center" Margin="0, 0, 0, 10"/>
+								<Button Name="NormalButton" Content="Enabled 0" />
+								<Button Content="Disabled" IsEnabled="False" Margin="0, 5, 0, 0"/>
+							</StackPanel>
+							<StackPanel x:Name="SP_PANEL_02" Margin="20, 0">
+								<TextBlock Text="Toggle Button" FontSize="18" TextAlignment="Center" Margin="0, 0, 0, 10" />
+								<ToggleButton Content="Enabled" />
+								<ToggleButton Content="Checked" IsChecked="True" Margin="0, 5, 0, 0" />
+								<ToggleButton Content="Disabled" IsEnabled="False" Margin="0, 5, 0, 0" />
+								<ToggleButton Content="Checked" IsChecked="False" Margin="0, 5, 0, 5" />
+							</StackPanel>
+							<StackPanel x:Name="SP_PANEL_03" Margin="20, 0">
+								<TextBlock Text="Toggle Switch" FontSize="18" TextAlignment="Center" Margin="0, 0, 0, 10" />
+								<ToggleSwitch Content="Enabled" />
+								<ToggleSwitch Content="Checked" IsChecked="True" Margin="0, 0, 0, 10" />
+								<ToggleSwitch Content="Disabled" IsChecked="False" IsEnabled="False" Margin="0, 0, 0, 10" />
+								<ToggleSwitch Content="Checked" IsChecked="False" Margin="0, 0, 0, 10" />
+							</StackPanel>
+							<StackPanel Margin="20, 0">
+								<TextBlock Text="Check Box" FontSize="18" TextAlignment="Center" Margin="0, 0, 0, 10" />
+								<CheckBox x:Name="CB_TEST_02" Content="Enable" IsChecked="True" />
+								<CheckBox Content="Disable" />
+								<CheckBox Content="3-State" IsChecked="{x:Null}" IsThreeState="True" Margin="0, 5, 0, 0" />
+								<CheckBox Content="Disabled" IsEnabled="False" Margin="0, 5, 0, 0" />
+								<CheckBox Content="Checked" IsChecked="True" IsEnabled="False" Margin="0, 5, 0, 0" />
+								<CheckBox Content="3-State" IsChecked="{x:Null}" IsThreeState="True" IsEnabled="False" Margin="0, 5, 0, 0" />
+							</StackPanel>
+							<StackPanel Margin="20, 0">
+								<TextBlock Text="Radio Button" FontSize="18" TextAlignment="Center" Margin="0, 0, 0, 10" />
+								<StackPanel>
+									<RadioButton Content="Enabled" />
+									<RadioButton Content="Checked" IsChecked="True" Margin="0, 5, 0, 0" />
+								</StackPanel>
+								<StackPanel>
+									<StackPanel>
+										<RadioButton Content="Disabled" IsEnabled="False" Margin="0, 5, 0, 0" />
+										<RadioButton Content="Checked" IsEnabled="False" IsChecked="True" Margin="0, 5, 0, 0" />
+									</StackPanel>
+								</StackPanel>
+							</StackPanel>
+							<!--<ToggleSplitButton Content="ToggleSplit" />-->
+						</StackPanel>
+						<StackPanel Orientation="Horizontal" Margin="0, 10, 0, 0">
+							<StackPanel>
+								<TextBlock Text="TextBox" FontSize="18" TextAlignment="Center" Margin="0, 0, 0, 10" />
+								<TextBox Text="Enabled" />
+								<TextBox Watermark="Placeholder" Margin="0, 5, 0, 0" />
+								<TextBox Text="Disabled" IsEnabled="False" Margin="0, 5, 0, 0" />
+							</StackPanel>
+							<StackPanel Margin="20, 0">
+								<TextBlock Text="pwd box" FontSize="18" TextAlignment="Center" Margin="0, 0, 0, 10" />
+								<TextBox PasswordChar="*" Text="Enabled" />
+								<TextBox PasswordChar="#" Text="" Watermark="Placeholder" Margin="0, 5, 0, 0" />
+								<TextBox PasswordChar="!" Text="Disabled" IsEnabled="False" Margin="0, 5, 0, 5" />
+							</StackPanel>
+							<StackPanel Margin="20, 0">
+								<TextBlock Text="Slider" FontSize="18" TextAlignment="Center" Margin="0, 0, 0, 10" />
+								<Slider Value="0" MinWidth="120" />
+								<Slider Value="1" TickPlacement="Outside" Margin="0, 5, 0, 0" />
+								<Slider Value="10" TickPlacement="BottomRight" Margin="0, 5, 0, 0" />
+								<Slider Value="2" IsDirectionReversed="True" TickPlacement="BottomRight" Margin="0, 5, 0, 0" />
+								<Slider Value="5" IsEnabled="False" Margin="0, 5, 0, 0" />
+							</StackPanel>
+							<StackPanel Margin="20, 0">
+								<TextBlock Text="ListBox" FontSize="18" TextAlignment="Center" Margin="0, 0, 0, 10" />
+								<ListBox BorderThickness="1">
+									<ListBoxItem Content="Unselected" />
+									<ListBoxItem Content="Selected" />
+									<ListBoxItem Content="Disable" IsEnabled="False" />
+								</ListBox>
+							</StackPanel>
+							<StackPanel Margin="20, 0">
+								<TextBlock Text="TreeView" FontSize="18" TextAlignment="Center" Margin="0, 0, 0, 10" />
+								<TreeView BorderThickness="10">
+									<TreeViewItem Header="Expanded" IsExpanded="True">
+										<TreeViewItem Header="Child" />
+									</TreeViewItem>
+									<TreeViewItem Header="Collapsed">
+										<TreeViewItem Header="Child" />
+									</TreeViewItem>
+									<TreeViewItem Header="Disabled">
+										<TreeViewItem Header="Child" />
+									</TreeViewItem>
+								</TreeView>
+							</StackPanel>
+						</StackPanel>
+					</StackPanel>
+				</Grid>
+
+				<StackPanel>
+					<UserControl>
+						<UserControl.Styles>
+							<Style Selector="TextBlock.h1">
+								<Setter Property="FontSize" Value="24" />
+							</Style>
+						</UserControl.Styles>
+					</UserControl>
+				</StackPanel>
+			</StackPanel>
+		</TabItem>
+	</TabControl>
+
+
+
+
+
+
+</UserControl>
