@@ -7,6 +7,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.VisualBasic;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Avalonia.Logging;
+using Avalonia.Rendering;
+using Avalonia.VisualTree;
 
 namespace AATestProject.Views;
 
@@ -54,6 +57,12 @@ public partial class MainWindow : Window
         var tokenSource = new CancellationTokenSource();
         var token = tokenSource.Token;
 
+        var renderRoot = this.GetVisualRoot() as IRenderRoot;
+        if (renderRoot is IRenderRoot root)
+        {
+            Logger.Sink.Log(LogEventLevel.Information, "Render", this, $"Current render backend: {root.Renderer.GetType().Name}");
+        }
+
         _ = Task.Run(() => {
             while (count-- >= 0)
             {
@@ -89,4 +98,5 @@ public partial class MainWindow : Window
     {
         return "NormalButton";
     }
+
 }
