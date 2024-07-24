@@ -1,11 +1,6 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
 using Avalonia.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AATestProject.UIComponents
 {
@@ -16,7 +11,7 @@ namespace AATestProject.UIComponents
         {
             base.OnPointerMoved(e);
             var pos = e.GetPosition(this);
-            
+
             if (pos.X < Bounds.Width * 0.25)
                 SetAreaPseudoclasses(true, false, false);
             else if (pos.X > Bounds.Width * 0.75)

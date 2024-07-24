@@ -10,4 +10,5 @@
         Title="AATestProject"
 		Width="800" Height="800">
         <views:MainView x:Name="MainViewObject"/>
+	
 </Window>

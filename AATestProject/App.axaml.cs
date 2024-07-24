@@ -1,11 +1,10 @@
 ﻿using AATestProject.ViewModels;
 using AATestProject.Views;
-
-using System;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Markup.Xaml;
 using Avalonia.Logging;
+using Avalonia.Markup.Xaml;
+using System;
 
 namespace AATestProject;
 
@@ -21,7 +20,7 @@ public partial class App : Application
         Logger.TryGet(LogEventLevel.Fatal, LogArea.Control)?.Log(this, "Avalonia Infrastructure");
         System.Diagnostics.Debug.WriteLine("System Diagnostics Debug");
 
-        
+
         var os = Environment.OSVersion;
         System.Diagnostics.Debug.WriteLine("### Current OS Information ### \n");
         System.Diagnostics.Debug.WriteLine("Platform: {0:G}", os.Platform);

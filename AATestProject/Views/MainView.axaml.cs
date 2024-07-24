@@ -1,22 +1,24 @@
-﻿using Avalonia.Controls;
+﻿using AATestProject.EH;
+using Avalonia.Controls;
+using Avalonia.Interactivity;
 using Avalonia.Threading;
 using System;
-using System.Threading.Tasks;
-using System.Timers;
-using System.Threading;
-using AATestLibrary;
 using System.ComponentModel.DataAnnotations;
-using Avalonia.Interactivity;
-using AATestProject.EH;
-using AATestProject.UIComponents;
 using System.Diagnostics;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace AATestProject.Views;
 
 public partial class MainView : UserControl
 {
     private TextBlock? _TB_TITLE;
-    private void SetText(string text) => _TB_TITLE.Text = text;
+    private void SetText(string text)
+    {
+        if (_TB_TITLE != null)
+            _TB_TITLE.Text = text;
+    }
+
     private string GetText() => _TB_TITLE?.Text ?? "";
 
     private string GetText2()
@@ -30,6 +32,7 @@ public partial class MainView : UserControl
     private System.Timers.Timer _m_timer;
 
     private Thread _m_t1;
+
     public MainView()
     {
         InitializeComponent();
@@ -53,7 +56,8 @@ public partial class MainView : UserControl
 
         _m_timer = new System.Timers.Timer();
         _m_timer.Interval = 1000;
-        _m_timer.Elapsed += new System.Timers.ElapsedEventHandler(timer_elapsed);
+
+        _m_timer.Elapsed += timer_elapsed;
 
         _m_timer.Start();
 
@@ -61,12 +65,17 @@ public partial class MainView : UserControl
         _m_t1 = new Thread(do_work);
         _m_t1.Start();
 
+
+        //string dllResult = GetTestLibInfo();
+        //Debug.WriteLine(dllResult);
+
+
         //TCustomButton btn = this.Get<TCustomButton>("AAA");
         //btn.Click += (s, e) =>
         //{
         //    Debug.WriteLine("### Clicked 155");
         //};
-        
+
         // t1.Join();
     }
 
@@ -83,7 +92,8 @@ public partial class MainView : UserControl
         {
             Dispatcher.UIThread.Post(() => SetText(text));
 
-            var result = await Dispatcher.UIThread.InvokeAsync(() => {
+            var result = await Dispatcher.UIThread.InvokeAsync(() =>
+            {
                 Stopwatch stopWatch = new Stopwatch();
                 stopWatch.Start();
                 Debug.WriteLine("### Entry Async");
@@ -122,7 +132,7 @@ public partial class MainView : UserControl
             // Dispatcher.UIThread.Post(() => SetText("UIThread.Post " + _m_work_cnt--));
             System.Diagnostics.Debug.WriteLine("Working from thread 1");
             _m_work_cnt--;
-        }   
+        }
     }
 
     [Required]

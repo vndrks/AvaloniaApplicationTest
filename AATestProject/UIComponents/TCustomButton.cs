@@ -1,22 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Avalonia;
+﻿using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
-using Avalonia.Markup.Xaml;
-using Avalonia.Media;
-using Avalonia.Styling;
+using System.Diagnostics;
 
 namespace AATestProject.UIComponents;
 public class TCustomButton : Button
 {
-    public static StyledProperty<int> RepeatCountProperty = 
+    public static readonly StyledProperty<int> RepeatCountProperty =
         AvaloniaProperty.Register<TCustomButton, int>(nameof(RepeatCount), defaultValue: 1);
 
     public int RepeatCount
@@ -33,7 +23,7 @@ public class TCustomButton : Button
     private void InitializeComponent()
     {
         // AvaloniaXamlLoader.Load(this);
-        
+
         Click += (s, e) =>
         {
             if (s is Button button)

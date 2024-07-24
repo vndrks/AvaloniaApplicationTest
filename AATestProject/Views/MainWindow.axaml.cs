@@ -1,15 +1,10 @@
 ﻿using Avalonia.Controls;
+using Avalonia.Rendering;
 using Avalonia.Threading;
+using Avalonia.VisualTree;
 using System;
-using System.IO;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.VisualBasic;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Avalonia.Logging;
-using Avalonia.Rendering;
-using Avalonia.VisualTree;
 
 namespace AATestProject.Views;
 
@@ -18,7 +13,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         // TCustomButton button = new TCustomButton();
-        
+
         InitializeComponent();
         /*
                 foreach (var type in assembly.GetTypes())
@@ -60,10 +55,11 @@ public partial class MainWindow : Window
         var renderRoot = this.GetVisualRoot() as IRenderRoot;
         if (renderRoot is IRenderRoot root)
         {
-            Logger.Sink.Log(LogEventLevel.Information, "Render", this, $"Current render backend: {root.Renderer.GetType().Name}");
+            //            Logger.Sink.Log(LogEventLevel.Information, "Render", this, $"Current render backend: {root.Renderer.GetType().Name}");
         }
 
-        _ = Task.Run(() => {
+        _ = Task.Run(() =>
+        {
             while (count-- >= 0)
             {
                 OnSendMessage();
@@ -80,11 +76,12 @@ public partial class MainWindow : Window
         {
             TextBlock? TB_DEFAULT = MainViewObject.FindControl<TextBlock>("DefaultButton");
             if (TB_DEFAULT != null)
-                TB_DEFAULT.Text = "Typed Text Block : " + count;
+                TB_DEFAULT.Text = "Text Block : " + count;
             // Thread.Sleep(10000);
         }));
 
-        await Dispatcher.UIThread.InvokeAsync(new Action(() => {
+        await Dispatcher.UIThread.InvokeAsync(new Action(() =>
+        {
             Button? BTN_NORMAL = MainViewObject.FindControl<Button>("NormalButton");
             if (BTN_NORMAL != null)
                 BTN_NORMAL.Content = "Enable : " + (100 - count);

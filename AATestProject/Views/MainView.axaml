@@ -15,7 +15,7 @@
 		<vm:MainViewModel />
 	</Design.DataContext>
 
-	<TabControl x:Name="TEST_TAB_CTRL_01" SelectedIndex="1">
+	<TabControl x:Name="TEST_TAB_CTRL_01" SelectedIndex="1" >
 		<TabItem Header="Notify prop change">
 			<StackPanel DataContext="{Binding VmType01}" Spacing="10">
 				<TextBlock> Send </TextBlock>
@@ -52,14 +52,17 @@
 					<local:TCustomButton Name="CustomButton_Cancel" Content="Cancel" RepeatCount="0"/>
 				</StackPanel>
 
+				<!--
 				<Button Name="AAA" Content="Button 01" />
 				<local:TCustomButton Name="BBB" Content="Button 02" />
 				<Button Name="CCC" Content="Button 03">CCC</Button>
 				<local:TCustomButtonType2> DDD </local:TCustomButtonType2>
 
 				<eh:CustomButtonControl x:Name="CustomButtonControl" ValueChanged="CustomButtonControl_NameChanged" />
+				-->
 			</StackPanel>
 		</TabItem>
+		
 		<TabItem Header="Reactive Object">
 			<StackPanel DataContext="{Binding VmType02}">
 				<Border Margin="5"
@@ -180,10 +183,10 @@
 			</StackPanel>
 		</TabItem>
 	</TabControl>
-
-
-
-
-
-
+	
+	
+	
+	
+	
+	
 </UserControl>
